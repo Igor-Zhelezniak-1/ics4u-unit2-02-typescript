@@ -14,26 +14,29 @@ const prompt = promptSync()
 const stack = new SecondStack()
 
 // Input and Process
-while (true) {
-  const input = prompt('Enter a number (! to leave): ')
+function stackTemp(): number {
+  while (true) {
+    const input = prompt('Enter a number (! to leave): ')
 
-  if (input === '!') {
-    break
-  } else {
-    const number = parseInt(input)
-    if (isNaN(number)) {
-      console.log(`${input} isn't number`)
+    if (input === '!') {
+      break
     } else {
-      stack.Push(number)
+      const number = parseInt(input)
+      if (isNaN(number)) {
+        console.log(`${input} isn't number`)
+      } else {
+        stack.Push(number)
+      }
     }
   }
+  let tempStack = stack.getStack()
+  return tempStack
 }
-let tempStack = stack.getStack()
+let tempStack = stackTemp()
 console.log(tempStack)
 
 console.log('Exit!')
 stack.popNumber()
-tempStack = stack.getStack()
 console.log(tempStack)
 
 console.log('\nDone.')
